@@ -1,6 +1,6 @@
-# My App – Next.js 14
+# My App – Next.js 15
 
-A full-stack web application built with [Next.js 14](https://nextjs.org/) (App Router), TypeScript, and Tailwind CSS.
+A full-stack web application built with [Next.js 15](https://nextjs.org/) (App Router), TypeScript, and Tailwind CSS.
 
 ## Features
 

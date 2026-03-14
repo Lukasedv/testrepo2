@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: "My App",
     template: "%s | My App",
   },
-  description: "A Next.js 14 application with App Router",
+  description: "A Next.js 15 application with App Router",
 };
 
 export default function RootLayout({

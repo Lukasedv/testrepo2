@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Home",
-  description: "Welcome to My App – a Next.js 14 application.",
+  description: "Welcome to My App – a Next.js 15 application.",
 };
 
 // This page is statically generated at build time (SSG)
@@ -13,7 +13,7 @@ export default function HomePage() {
       <div className="text-center">
         <h1 className="text-4xl font-bold tracking-tight">Welcome to My App</h1>
         <p className="mt-4 text-lg text-gray-600">
-          Built with Next.js 14, TypeScript, and Tailwind CSS.
+          Built with Next.js 15, TypeScript, and Tailwind CSS.
         </p>
       </div>
 
