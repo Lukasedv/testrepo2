@@ -4,6 +4,10 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Log in",
   description: "Sign in to your account.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function LoginPage() {

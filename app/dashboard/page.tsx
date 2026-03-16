@@ -5,6 +5,10 @@ import { notFound } from "next/navigation";
 export const metadata: Metadata = {
   title: "Dashboard",
   description: "Your personal dashboard.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 interface UserData {
