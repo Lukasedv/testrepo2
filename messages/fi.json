@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "blog": "Blogi",
+    "dashboard": "Hallintapaneeli",
+    "login": "Kirjaudu sisään",
+    "backToHome": "← Takaisin etusivulle",
+    "backToBlog": "← Takaisin blogiin"
+  },
+  "home": {
+    "title": "Tervetuloa sovellukseemme",
+    "subtitle": "Rakennettu Next.js 15:llä, TypeScriptillä ja Tailwind CSS:llä."
+  },
+  "login": {
+    "title": "Kirjaudu sisään",
+    "subtitle": "Syötä tunnuksesi päästäksesi tilillesi.",
+    "email": "Sähköposti",
+    "emailPlaceholder": "sinä@esimerkki.fi",
+    "password": "Salasana",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Kirjaudu sisään",
+    "noAccount": "Eikö sinulla ole tiliä?",
+    "returnHome": "Palaa etusivulle"
+  },
+  "dashboard": {
+    "title": "Hallintapaneeli",
+    "profile": {
+      "title": "Profiili",
+      "name": "Nimi",
+      "email": "Sähköposti",
+      "role": "Rooli",
+      "lastLogin": "Viimeisin kirjautuminen"
+    },
+    "quickLinks": {
+      "title": "Pikavalinnat",
+      "blog": "Näytä blogikirjoitukset",
+      "health": "Ohjelmointirajapinnan terveystarkistus"
+    }
+  },
+  "blog": {
+    "title": "Blogi",
+    "readMore": "Lue lisää →"
+  },
+  "error": {
+    "title": "Jokin meni pieleen!",
+    "retry": "Yritä uudelleen"
+  },
+  "notFound": {
+    "title": "404 – Sivua ei löydy",
+    "description": "Etsimääsi sivua ei ole olemassa.",
+    "backToHome": "← Takaisin etusivulle"
+  },
+  "settings": {
+    "language": {
+      "label": "Kieli",
+      "en": "English",
+      "fi": "Suomi",
+      "sv": "Svenska"
+    }
+  }
+}

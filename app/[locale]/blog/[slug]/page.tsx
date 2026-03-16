@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import LanguageSelector from "@/app/components/LanguageSelector";
 
 interface Post {
   slug: string;
@@ -65,7 +67,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = POSTS.find((p) => p.slug === slug);
@@ -79,27 +81,21 @@ export async function generateMetadata({
 // ISR: revalidate every 60 seconds
 export const revalidate = 60;
 
-export default async function BlogPostPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
-  const { slug } = await params;
-  const post = POSTS.find((p) => p.slug === slug);
-
-  if (!post) {
-    notFound();
-  }
+function BlogPost({ post }: { post: Post }) {
+  const nav = useTranslations("nav");
 
   return (
     <main className="min-h-screen p-8">
       <div className="mx-auto max-w-3xl">
-        <Link
-          href="/blog"
-          className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-        >
-          ← Back to Blog
-        </Link>
+        <div className="flex items-center justify-between mb-4">
+          <Link
+            href="../blog"
+            className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+          >
+            {nav("backToBlog")}
+          </Link>
+          <LanguageSelector />
+        </div>
 
         <article className="mt-6">
           <time className="text-xs text-gray-400">{post.date}</time>
@@ -124,4 +120,19 @@ export default async function BlogPostPage({
       </div>
     </main>
   );
+}
+
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = POSTS.find((p) => p.slug === slug);
+
+  if (!post) {
+    notFound();
+  }
+
+  return <BlogPost post={post} />;
 }
