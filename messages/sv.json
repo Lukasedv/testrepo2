@@ -1,0 +1,60 @@
+{
+  "nav": {
+    "blog": "Blogg",
+    "dashboard": "Instrumentpanel",
+    "login": "Logga in",
+    "backToHome": "← Tillbaka till startsidan",
+    "backToBlog": "← Tillbaka till bloggen"
+  },
+  "home": {
+    "title": "Välkommen till vår app",
+    "subtitle": "Byggd med Next.js 15, TypeScript och Tailwind CSS."
+  },
+  "login": {
+    "title": "Logga in på appen",
+    "subtitle": "Ange dina inloggningsuppgifter för att komma åt ditt konto.",
+    "email": "E-post",
+    "emailPlaceholder": "du@exempel.se",
+    "password": "Lösenord",
+    "passwordPlaceholder": "••••••••",
+    "submit": "Logga in",
+    "noAccount": "Har du inget konto?",
+    "returnHome": "Tillbaka till startsidan"
+  },
+  "dashboard": {
+    "title": "Instrumentpanel",
+    "profile": {
+      "title": "Profil",
+      "name": "Namn",
+      "email": "E-post",
+      "role": "Roll",
+      "lastLogin": "Senaste inloggning"
+    },
+    "quickLinks": {
+      "title": "Snabblänkar",
+      "blog": "Visa blogginlägg",
+      "health": "API-hälsokontroll"
+    }
+  },
+  "blog": {
+    "title": "Blogg",
+    "readMore": "Läs mer →"
+  },
+  "error": {
+    "title": "Något gick fel!",
+    "retry": "Försök igen"
+  },
+  "notFound": {
+    "title": "404 – Sidan hittades inte",
+    "description": "Sidan du letar efter finns inte.",
+    "backToHome": "← Tillbaka till startsidan"
+  },
+  "settings": {
+    "language": {
+      "label": "Språk",
+      "en": "English",
+      "fi": "Suomi",
+      "sv": "Svenska"
+    }
+  }
+}
