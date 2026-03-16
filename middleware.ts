@@ -1,10 +1,17 @@
 import { NextRequest, NextResponse } from "next/server";
 
 /**
- * Protected route prefixes.
- * Requests to these paths require an authenticated session.
+ * Protected route prefixes – all sub-paths require an authenticated session.
  */
-const PROTECTED_PATHS = ["/dashboard"];
+const PROTECTED_PREFIXES = ["/dashboard"];
+
+/**
+ * Protected route patterns – matched against the full pathname.
+ */
+const PROTECTED_PATTERNS = [
+  /^\/events\/new$/,
+  /^\/events\/[^/]+\/edit$/,
+];
 
 /**
  * Session cookie name.
@@ -15,9 +22,9 @@ const SESSION_COOKIE = "session_token";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  const isProtected = PROTECTED_PATHS.some((path) =>
-    pathname.startsWith(path)
-  );
+  const isProtected =
+    PROTECTED_PREFIXES.some((prefix) => pathname.startsWith(prefix)) ||
+    PROTECTED_PATTERNS.some((pattern) => pattern.test(pathname));
 
   if (isProtected) {
     const session = request.cookies.get(SESSION_COOKIE);

@@ -77,6 +77,22 @@ export default async function DashboardPage() {
             <ul className="space-y-2 text-sm">
               <li>
                 <Link
+                  href="/events"
+                  className="text-blue-600 hover:underline"
+                >
+                  Browse Events
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/dashboard/events"
+                  className="text-blue-600 hover:underline"
+                >
+                  My Events
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/blog"
                   className="text-blue-600 hover:underline"
                 >
