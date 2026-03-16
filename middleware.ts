@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
  * Protected route prefixes.
  * Requests to these paths require an authenticated session.
  */
-const PROTECTED_PATHS = ["/dashboard"];
+const PROTECTED_PATHS = ["/dashboard", "/admin"];
 
 /**
  * Session cookie name.
