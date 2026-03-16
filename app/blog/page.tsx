@@ -3,7 +3,23 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Read our latest blog posts.",
+  description:
+    "Read our latest articles on Next.js, React, and modern web development.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog | My App",
+    description:
+      "Read our latest articles on Next.js, React, and modern web development.",
+    url: "/blog",
+    type: "website",
+  },
+  twitter: {
+    title: "Blog | My App",
+    description:
+      "Read our latest articles on Next.js, React, and modern web development.",
+  },
 };
 
 interface Post {
