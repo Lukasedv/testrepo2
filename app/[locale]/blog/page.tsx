@@ -11,9 +11,24 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "blog" });
+  const description =
+    "Read our latest articles on Next.js, React, and modern web development.";
   return {
     title: t("title"),
-    description: t("title"),
+    description,
+    alternates: {
+      canonical: "/blog",
+    },
+    openGraph: {
+      title: `${t("title")} | My App`,
+      description,
+      url: "/blog",
+      type: "website",
+    },
+    twitter: {
+      title: `${t("title")} | My App`,
+      description,
+    },
   };
 }
 

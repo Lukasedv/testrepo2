@@ -3,6 +3,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import LanguageSelector from "@/app/components/LanguageSelector";
+import { JsonLd } from "@/app/lib/structured-data";
 
 interface Post {
   slug: string;
@@ -64,6 +65,10 @@ export async function generateStaticParams() {
   return POSTS.map((post) => ({ slug: post.slug }));
 }
 
+function getPostDescription(post: Post): string {
+  return post.content.split("\n")[0].slice(0, 160);
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -72,9 +77,24 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = POSTS.find((p) => p.slug === slug);
   if (!post) return { title: "Post Not Found" };
+  const description = getPostDescription(post);
   return {
     title: post.title,
-    description: post.content.split("\n")[0].slice(0, 160),
+    description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: `${post.title} | My App`,
+      description,
+      url: `/blog/${slug}`,
+      type: "article",
+      publishedTime: post.date,
+    },
+    twitter: {
+      title: `${post.title} | My App`,
+      description,
+    },
   };
 }
 
@@ -84,8 +104,31 @@ export const revalidate = 60;
 function BlogPost({ post }: { post: Post }) {
   const nav = useTranslations("nav");
 
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: {
+      "@type": "Organization",
+      name: "My App",
+      url: baseUrl,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "My App",
+      url: baseUrl,
+    },
+    url: `${baseUrl}/blog/${post.slug}`,
+    description: getPostDescription(post),
+  };
+
   return (
-    <main className="min-h-screen p-8">
+    <>
+      <JsonLd data={articleSchema} />
+      <main className="min-h-screen p-8">
       <div className="mx-auto max-w-3xl">
         <div className="flex items-center justify-between mb-4">
           <Link
@@ -119,6 +162,7 @@ function BlogPost({ post }: { post: Post }) {
         </article>
       </div>
     </main>
+    </>
   );
 }
 
