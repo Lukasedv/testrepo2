@@ -24,7 +24,7 @@ export interface HeroBannerConfig {
   backgroundImage?: BackgroundImageConfig;
   /**
    * Opacity of the semi-transparent overlay applied over the background
-   * to ensure text legibility. Value between 0 and 1. Defaults to 0.5.
+   * to ensure text legibility. Value between 0 and 1. Defaults to 0.55.
    */
   overlayOpacity?: number;
 }
