@@ -25,6 +25,12 @@ export default function HomePage() {
           Blog
         </Link>
         <Link
+          href="/events"
+          className="rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-colors"
+        >
+          Events
+        </Link>
+        <Link
           href="/dashboard"
           className="rounded-lg border border-gray-300 px-6 py-3 text-sm font-medium hover:bg-gray-50 transition-colors"
         >
