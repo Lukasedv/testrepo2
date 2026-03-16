@@ -16,10 +16,14 @@ const PROTECTED_PATHS = ["/dashboard"];
  */
 const SESSION_COOKIE = "session_token";
 
-/** Strip the locale prefix (e.g. /en, /fi, /sv) from a pathname. */
+/** Regex that matches the locale prefix segment (e.g. /en, /fi, /sv). */
+const LOCALE_PREFIX_RE = new RegExp(
+  `^\\/(${routing.locales.join("|")})`
+);
+
+/** Strip the locale prefix from a pathname, returning at least "/". */
 function stripLocale(pathname: string): string {
-  const stripped = pathname.replace(/^\/(en|fi|sv)/, "");
-  return stripped || "/";
+  return pathname.replace(LOCALE_PREFIX_RE, "") || "/";
 }
 
 export function middleware(request: NextRequest) {
@@ -36,7 +40,7 @@ export function middleware(request: NextRequest) {
 
     if (!session?.value) {
       // Preserve the locale when redirecting to the login page
-      const localeMatch = pathname.match(/^\/(en|fi|sv)/);
+      const localeMatch = pathname.match(LOCALE_PREFIX_RE);
       const locale = localeMatch ? localeMatch[1] : routing.defaultLocale;
       const loginUrl = new URL(`/${locale}/login`, request.url);
       loginUrl.searchParams.set("redirect", pathnameWithoutLocale);
@@ -60,4 +64,5 @@ export const config = {
     "/((?!_next/static|_next/image|favicon.ico|api|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };
+
 
