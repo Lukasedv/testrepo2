@@ -40,7 +40,7 @@ To view or develop this project locally, you only need:
 | A text editor *(optional)* | Any | VS Code, Vim, Notepad++, etc. |
 | A local HTTP server *(optional)* | Any | Only needed if you want to serve over HTTP instead of opening the file directly |
 
-No Node.js, Python, Docker, or other runtimes are required.
+No runtimes are required for **Option 1** (opening the file directly). Python 3 or Node.js are only needed if you choose to use the optional local HTTP server in **Option 2**.
 
 ---
 
@@ -96,8 +96,9 @@ Then follow the URL printed in your terminal.
 
 ```
 testrepo2/
-├── index.html   # The single Hello World HTML page
-└── README.md    # This file
+├── .github/         # GitHub configuration (Actions, agents, etc.)
+├── index.html       # The single Hello World HTML page
+└── README.md        # This file
 ```
 
 ---
